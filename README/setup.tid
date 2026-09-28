@@ -1,0 +1,39 @@
+tags:
+title: $:/plugins/breakzplatform/bluesky-comments/README/setup
+type: text/vnd.tiddlywiki
+
+! Setup
+
+There is nothing to configure to get started.
+
+# Post a link to your tiddler on Bluesky.
+# Copy the link of that post. In the Bluesky app, use ''Copy link to post'' from the post menu.
+# Add a `bluesky-post` field to the tiddler and paste the link as its value.
+
+A ''Show Bluesky comments'' button then appears at the bottom of the tiddler, and a butterfly button in its toolbar. Tiddlers without the field are left alone.
+
+The field accepts:
+
+* links from bsky.app, such as `https://bsky.app/profile/alice.bsky.social/post/3kxyz...`, and from other clients that use the same URL layout
+* links with the account DID in place of the handle
+* `at://` URIs
+
+!! What is shown
+
+* The author of each reply, with avatar, name and handle
+* The text, with its links, mentions and hashtags
+* The date, linking to the reply on Bluesky
+* Images and link cards. Quotes and videos get a link to see them on Bluesky
+* Replies, reposts and likes counts, unless turned off in the [[settings|$:/plugins/breakzplatform/bluesky-comments/settings/settings]]
+* Nested replies, up to the configured depth. Deeper conversations get a link to continue on Bluesky
+
+!! What is hidden
+
+* Replies from people who chose, in their Bluesky settings, not to show their posts to logged-out visitors. Visitors of a wiki are always logged out
+* Replies with the moderation labels listed in the settings: by default, adult content, graphic media and spam, whether the label is on the post or on its author
+* Replies that the author of the post hid in Bluesky
+* Deleted replies and replies from blocked accounts
+
+When a hidden reply has visible answers, a short notice stands in its place so the conversation still makes sense. The others are left out and counted in a link to the full thread on Bluesky.
+
+//Select the next tab to continue.//

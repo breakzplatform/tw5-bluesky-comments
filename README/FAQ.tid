@@ -1,0 +1,37 @@
+tags:
+title: $:/plugins/breakzplatform/bluesky-comments/README/FAQ
+type: text/vnd.tiddlywiki
+
+! Frequently asked questions
+
+!! Do I need a Bluesky account or an API key?
+
+No. The plugin reads from the public Bluesky API, which needs no login. You only need an account to post the announcement, and your visitors only need one to reply.
+
+!! Does it store anything in the wiki?
+
+Only the `bluesky-post` field and the settings. The replies are fetched when the comments are opened and kept in memory for five minutes.
+
+!! Does it work on a static or read-only wiki?
+
+Yes. Everything happens in the visitor's browser. When the wiki is rendered to static HTML, the comments are replaced by a link to the post.
+
+!! Can the plugin find the post by itself?
+
+Not yet. Finding it would mean searching Bluesky for the tiddler URL, and the public API used by the plugin refuses searches (checked in September 2026). The search does answer on `api.bsky.app` without a login, but Bluesky does not document that as a public, stable service, so the link goes in the field by hand.
+
+!! Why do some replies not show up?
+
+See ''What is hidden'' in the Setup tab. The count at the top comes from Bluesky and includes every reply, so it can be higher than the number of replies shown.
+
+!! How do I translate the texts?
+
+Edit the [[language dictionary|$:/plugins/breakzplatform/bluesky-comments/language]]. It holds every text the comments show, one `key: text` per line; `$count$` is replaced by a number. Your edited copy overrides the one in the plugin. The date format uses the [[TiddlyWiki date format|https://tiddlywiki.com/#DateFormat]], so month names follow the language of the wiki.
+
+!! Can I place the comments somewhere else?
+
+Use the widget in any template: `<$bluesky-comments tiddler=<<currentTiddler>>/>`. The `post` attribute takes a link directly, for example `<$bluesky-comments post="https://bsky.app/profile/..."/>`.
+
+!! Can I use another Bluesky client for the links?
+
+Yes. Set ''Links open in'' in the settings to any client that follows the bsky.app URL layout.

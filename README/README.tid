@@ -1,0 +1,22 @@
+tags:
+title: $:/plugins/breakzplatform/bluesky-comments/README/README
+type: text/vnd.tiddlywiki
+
+! Bluesky comments
+
+Use this plugin to show the replies to a [[Bluesky|https://bsky.app]] post as comments on a tiddler. Announce a tiddler on Bluesky, paste the link of that post into the tiddler, and the conversation shows up at the bottom of it.
+
+* https://github.com/breakzplatform/tw5-bluesky-comments (main repository, ''please add a star if you like the plugin'')
+* Demo: https://tw5-bluesky-comments.joselito.dev
+
+The replies are read from the public Bluesky API, with no login and no third-party service in between. They are drawn with the wiki's own markup and palette, so they follow your theme. The comments are read-only: a ''Reply on Bluesky'' link opens the post, where anyone with an account can join the conversation.
+
+!! Installation instructions
+
+To add the plugin to your own ~TiddlyWiki5, just drag this link to the browser window:
+
+$:/plugins/breakzplatform/bluesky-comments
+
+For other installation options see the repo above.
+
+//Select the next tab to continue.//
