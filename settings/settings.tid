@@ -1,0 +1,26 @@
+tags: $:/tags/ControlPanel
+title: $:/plugins/breakzplatform/bluesky-comments/settings/settings
+type: text/vnd.tiddlywiki
+caption: Bluesky comments
+
+<$list filter="[[$:/ControlPanel]!is[current]]">
+    Configuration for the plugin can be done from within the Bluesky comments tab in the [[ControlPanel|$:/ControlPanel]] as well.
+</$list>
+<$list filter="[[$:/ControlPanel]is[current]]">
+    Configuration for the [[Bluesky comments plugin|$:/plugins/breakzplatform/bluesky-comments]].
+</$list>
+
+|[[Filter|$:/config/breakzplatform/bluesky-comments/filter]]<blockquote>Which tiddlers can show comments? Only those with a `bluesky-post` field are affected.</blockquote> |<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/filter" default="" tag="input"/> |
+|[[Reply depth|$:/config/breakzplatform/bluesky-comments/depth]] |<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/depth" default="" tag="input" type="number" min="1" max="20"/><br/>//Levels of nested replies to show, from 1 to 20. Deeper replies get a link to Bluesky.// |
+|[[Order|$:/config/breakzplatform/bluesky-comments/sort]] |<$select tiddler="$:/config/breakzplatform/bluesky-comments/sort" default="oldest"><option value="oldest">Oldest first</option><option value="newest">Newest first</option><option value="likes">Most liked first</option></$select><br/>//Applies to the direct replies. Nested replies always read oldest first.// |
+|[[Show counts|$:/config/breakzplatform/bluesky-comments/counts]] |<$select tiddler="$:/config/breakzplatform/bluesky-comments/counts" default="yes"><option value="yes">Yes</option><option value="no">No</option></$select><br/>//Replies, reposts and likes.// |
+|[[Hidden labels|$:/config/breakzplatform/bluesky-comments/hidden-labels]] |<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/hidden-labels" default="" tag="input"/><br/>//Replies carrying any of these moderation labels, on the post or on its author, are replaced by a notice. Separate them with spaces.// |
+|[[Show label text|$:/config/breakzplatform/bluesky-comments/label-show]]|<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/label-show" default="" tag="input"/> |
+|[[Hide label text|$:/config/breakzplatform/bluesky-comments/label-hide]]|<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/label-hide" default="" tag="input"/> |
+
+!! Advanced
+
+|[[API|$:/config/breakzplatform/bluesky-comments/api]] |<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/api" default="" tag="input"/><br/>//The public Bluesky AppView. No login is needed.// |
+|[[Links open in|$:/config/breakzplatform/bluesky-comments/app]] |<$edit-text tiddler="$:/config/breakzplatform/bluesky-comments/app" default="" tag="input"/><br/>//Base URL for links to posts, profiles and hashtags. Any client that follows the bsky.app URL layout works.// |
+
+To translate the texts shown with the comments, edit the [[language dictionary|$:/plugins/breakzplatform/bluesky-comments/language]].

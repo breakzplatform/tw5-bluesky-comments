@@ -1,0 +1,28 @@
+title: $:/plugins/breakzplatform/bluesky-comments/language
+type: application/x-tiddler-dictionary
+
+ReplyOnBluesky: Reply on Bluesky
+Loading: Loading replies from Bluesky…
+NoReplies: No replies yet. Reply on Bluesky to start the conversation.
+ContinueThread: Continue this thread on Bluesky
+SeeAttachment: See the attachment on Bluesky
+Retry: Try again
+DateFormat: DDth mmm YYYY, 0hh:0mm
+Count/Reply: $count$ reply
+Count/Replies: $count$ replies
+Count/Repost: $count$ repost
+Count/Reposts: $count$ reposts
+Count/Like: $count$ like
+Count/Likes: $count$ likes
+Hidden/SignedInOnly: This reply is only visible to people signed in to Bluesky.
+Hidden/Moderated: This reply is hidden by the moderation settings of this wiki.
+Omitted/One: $count$ more reply is only available on Bluesky.
+Omitted/Many: $count$ more replies are only available on Bluesky.
+Error/MissingLink: Bluesky comments: this tiddler has no bluesky-post field.
+Error/InvalidLink: Bluesky comments: the bluesky-post field is not a link to a Bluesky post.
+Error/NotFound: The Bluesky post of this tiddler was not found. It may have been deleted.
+Error/Blocked: The Bluesky post of this tiddler is not available.
+Error/RootHidden: The Bluesky post of this tiddler cannot be shown here.
+Error/RateLimit: Bluesky is limiting requests right now. Try again in a few minutes.
+Error/Network: Could not reach Bluesky. Check your connection.
+Error/Unavailable: Bluesky could not load the replies right now.

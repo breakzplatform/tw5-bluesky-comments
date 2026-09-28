@@ -1,0 +1,23 @@
+tags: $:/tags/ViewToolbar
+title: $:/plugins/breakzplatform/bluesky-comments/viewtoolbar/bluesky-comments-open
+type: text/vnd.tiddlywiki
+caption: {{$:/plugins/breakzplatform/bluesky-comments/icon}} Bluesky comments
+description: View Bluesky comments
+list-before: $:/core/ui/Buttons/info
+
+\whitespace trim
+<$list filter="[all[current]has[bluesky-post]subfilter{$:/config/breakzplatform/bluesky-comments/filter}]" variable="doNotOverrideCurrent">
+	<$button tooltip="View Bluesky comments" aria-label="bluesky comments" class=<<tv-config-toolbar-class>>>
+		<$action-setfield $tiddler={{{ [[$:/state/breakzplatform/bluesky-comments/]addsuffix<currentTiddler>] }}} text="open"/>
+		<$action-sendmessage $message="tm-bluesky-comments-scroll" $param=<<currentTiddler>>/>
+		<$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
+			{{$:/plugins/breakzplatform/bluesky-comments/icon}}
+		</$list>
+		<$list filter="[<tv-config-toolbar-text>prefix[yes]]">
+			<span class="tc-btn-text">
+				<$text text=" "/>
+				<$text text="view Bluesky comments"/>
+			</span>
+		</$list>
+	</$button>
+</$list>
