@@ -156,3 +156,21 @@ test("reports missing and blocked root posts", function () {
 	assert.equal(thread.buildThread({ thread: { $type: "app.bsky.feed.defs#blockedPost" } }, { maxDepth: 1 }).kind, "blocked");
 	assert.equal(thread.buildThread({}, { maxDepth: 1 }).kind, "not-found");
 });
+
+test("isWebUrl accepts only http and https links", function () {
+	assert.equal(thread.isWebUrl("https://example.com/a"), true);
+	assert.equal(thread.isWebUrl("HTTP://example.com"), true);
+	assert.equal(thread.isWebUrl("javascript:alert(1)"), false);
+	assert.equal(thread.isWebUrl("data:text/html,x"), false);
+	assert.equal(thread.isWebUrl("https://exa mple.com"), false);
+	assert.equal(thread.isWebUrl(null), false);
+});
+
+test("segmentText drops link and mention facets with unsafe targets", function () {
+	var segments = thread.segmentText("bad link", [
+		{ index: { byteStart: 0, byteEnd: 3 }, features: [{ $type: "app.bsky.richtext.facet#link", uri: "javascript:alert(1)" }] },
+		{ index: { byteStart: 4, byteEnd: 8 }, features: [{ $type: "app.bsky.richtext.facet#mention", did: "did:plc:x/../evil" }] }
+	]);
+	assert.ok(segments.every(function (segment) { return !segment.feature; }));
+	assert.equal(segments.map(function (segment) { return segment.text; }).join(""), "bad link");
+});
