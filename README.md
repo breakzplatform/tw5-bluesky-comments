@@ -33,6 +33,7 @@ In the *Bluesky comments* tab of the Control Panel:
 | Reply depth | 6 | Levels of nested replies, from 1 to 20 |
 | Order | Oldest first | Also newest first or most liked first, for the direct replies |
 | Show counts | Yes | Replies, reposts and likes |
+| Show and hide label text | Show/Hide Bluesky comments | Text of the button |
 | Hidden labels | `!hide !warn porn sexual nudity graphic-media gore spam` | Moderation labels that hide a reply |
 | API | `https://public.api.bsky.app` | The public Bluesky AppView |
 | Links open in | `https://bsky.app` | Any client with the same URL layout |
