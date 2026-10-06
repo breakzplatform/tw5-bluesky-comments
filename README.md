@@ -17,11 +17,11 @@ Sibling of [tw5-github-comments](https://github.com/breakzplatform/tw5-github-co
 
 ### Drag'n'drop
 - Open the demo TiddlyWiki: https://tw5-bluesky-comments.joselito.dev
-- Drag-n-drop the plugin tiddler in to your wiki
+- Drag the plugin box into your wiki
 
 ### Copy to a Node.js based wiki
-- Create a `bluesky-comments` folder inside yours wiki `plugins` folder
-- Clone this repo inside `bluesky-comments` folder
+- Create a `bluesky-comments` folder inside your wiki's `plugins` folder
+- Clone this repo into the `bluesky-comments` folder
 
 ## Settings
 
