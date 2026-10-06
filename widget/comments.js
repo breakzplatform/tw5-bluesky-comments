@@ -171,6 +171,7 @@ Display the replies to a Bluesky post as comments on a tiddler
 			});
 			return;
 		}
+		pruneExpired(threadCache);
 		entry = threadCache[key] = { loading: true, waiting: [], expires: Infinity };
 		var finish = function (result) {
 			threadCache[key] = { result: result, expires: Date.now() + (result.error === "rate-limit" ? 0 : CACHE_LIFETIME) };
@@ -216,6 +217,13 @@ Display the replies to a Bluesky post as comments on a tiddler
 
 	function text(content) {
 		return { type: "text", text: content };
+	}
+
+	function pruneExpired(cache) {
+		var now = Date.now();
+		Object.keys(cache).forEach(function (key) {
+			if (cache[key].expires < now) delete cache[key];
+		});
 	}
 
 	function externalLink(href, className, children, title) {
@@ -354,16 +362,20 @@ Display the replies to a Bluesky post as comments on a tiddler
 		var profile = this.profileUrl(author.did);
 		var meta = [];
 		if (thread.isWebUrl(author.avatar)) {
-			meta.push(externalLink(profile, "bsky-comment-avatar-link", [
+			// The name link right after it goes to the same profile, so screen readers and the tab order skip this one
+			var avatarLink = externalLink(profile, "bsky-comment-avatar-link", [
 				element("img", "bsky-comment-avatar", [], { src: author.avatar, alt: "", loading: "lazy" })
-			]));
+			]);
+			avatarLink.attributes["aria-hidden"] = { type: "string", value: "true" };
+			avatarLink.attributes.tabindex = { type: "string", value: "-1" };
+			meta.push(avatarLink);
 		}
 		meta.push(externalLink(profile, "bsky-comment-author", [
 			element("span", "bsky-comment-name", [text(author.displayName || author.handle)]),
 			text(" "),
 			element("span", "bsky-comment-handle", [text("@" + author.handle)])
 		]));
-		var created = new Date(post.record && post.record.createdAt);
+		var created = new Date(post.record && typeof post.record.createdAt === "string" ? post.record.createdAt : NaN);
 		if (!isNaN(created.getTime())) {
 			meta.push(externalLink(this.postUrl(post), "bsky-comment-date", [
 				element("time", "", [text($tw.utils.formatDateString(created, this.getText("DateFormat")))], {
@@ -409,7 +421,7 @@ Display the replies to a Bluesky post as comments on a tiddler
 		if (!embed) return null;
 		var media = embed.$type === "app.bsky.embed.recordWithMedia#view" ? embed.media : embed;
 		var parts = [];
-		var images = media && media.$type === "app.bsky.embed.images#view" ? (media.images || []).filter(function (image) {
+		var images = media && media.$type === "app.bsky.embed.images#view" ? (Array.isArray(media.images) ? media.images : []).filter(function (image) {
 			return image && thread.isWebUrl(image.thumb) && thread.isWebUrl(image.fullsize);
 		}) : [];
 		if (images.length) {

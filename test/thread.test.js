@@ -87,6 +87,20 @@ test("classifies labels on the post and on the author, honoring negation", funct
 	assert.equal(thread.classifyPost(post("a", { authorLabels: [{ val: "!no-unauthenticated" }] }), HIDDEN), "signed-in-only");
 });
 
+test("a negation only retracts the label from the same source", function () {
+	var moderation = "did:plc:ar7c4by46qjdydhdevvrndac";
+	var labels = [{ src: moderation, val: "porn" }, { src: DID, val: "porn", neg: true }];
+	assert.equal(thread.classifyPost(post("a", { labels: labels }), HIDDEN), "moderated");
+	labels.push({ src: moderation, val: "porn", neg: true });
+	assert.equal(thread.classifyPost(post("a", { labels: labels }), HIDDEN), "visible");
+});
+
+test("ignores expired labels", function () {
+	var labels = [{ src: DID, val: "spam", exp: "2026-01-01T00:00:00Z" }];
+	assert.deepEqual(thread.getLabels(post("a", { labels: labels }), Date.parse("2026-02-01T00:00:00Z")), []);
+	assert.deepEqual(thread.getLabels(post("a", { labels: labels }), Date.parse("2025-12-01T00:00:00Z")), ["spam"]);
+});
+
 test("builds the reply tree, keeping hidden replies only as context for visible ones", function () {
 	var response = {
 		thread: {
