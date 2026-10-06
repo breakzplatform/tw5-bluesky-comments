@@ -11,7 +11,7 @@ Demo: https://tw5-bluesky-comments.joselito.dev
 
 Setup steps and details are in the plugin's *Setup* tab.
 
-Sibling of [tw5-github-comments](https://github.com/breakzplatform/tw5-github-comments), which keeps comments on GitHub.
+Sibling of [tw5-github-comments](https://github.com/breakzplatform/tw5-github-comments), which keeps comments on GitHub, and [tw5-mastodon-comments](https://github.com/breakzplatform/tw5-mastodon-comments), which shows the replies to a Mastodon post.
 
 ## Installation instructions
 
