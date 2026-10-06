@@ -4,6 +4,10 @@ type: text/vnd.tiddlywiki
 
 I'm trying to follow the rules of [[Semantic Versioning|https://semver.org/]].
 
+!! 1.0.1
+
+* The toolbar button now scrolls to the comments on older cores such as 5.1.23
+
 !! 1.0.0
 
 * A label retraction (`neg`) only cancels the label from the same source, so a self-label can no longer cancel a moderation service's label
