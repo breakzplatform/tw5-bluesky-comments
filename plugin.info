@@ -2,7 +2,7 @@
 	"title": "$:/plugins/breakzplatform/bluesky-comments",
 	"description": "Replies to a Bluesky post as comments",
 	"author": "breakzplatform",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"license": "MIT",
 	"core-version": ">=5.1.23",
 	"source": "https://github.com/breakzplatform/tw5-bluesky-comments",

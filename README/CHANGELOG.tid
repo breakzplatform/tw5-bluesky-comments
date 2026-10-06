@@ -4,6 +4,14 @@ type: text/vnd.tiddlywiki
 
 I'm trying to follow the rules of [[Semantic Versioning|https://semver.org/]].
 
+!! 1.0.0
+
+* A label retraction (`neg`) only cancels the label from the same source, so a self-label can no longer cancel a moderation service's label
+* Expired labels no longer hide replies
+* Expired threads are dropped from the in-memory cache
+* The avatar link is skipped by screen readers and the tab order, since the name next to it links to the same profile
+* Malformed dates, image lists and facets from the API no longer break rendering
+
 !! 0.1.0
 
 * First release
