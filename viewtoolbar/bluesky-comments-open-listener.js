@@ -23,7 +23,8 @@ Scroll to the Bluesky comments when they are opened from the toolbar
 	exports.startup = function () {
 		$tw.rootWidget.addEventListener("tm-bluesky-comments-scroll", function (event) {
 			var title = event.param;
-			setTimeout(function () {
+			var attempts = 0;
+			var tryScroll = function () {
 				var wrappers = document.querySelectorAll(".bsky-comments");
 				for (var index = 0; index < wrappers.length; index++) {
 					if (wrappers[index].getAttribute("data-tiddler-title") === title) {
@@ -31,7 +32,10 @@ Scroll to the Bluesky comments when they are opened from the toolbar
 						return;
 					}
 				}
-			}, 0);
+				// Older cores refresh the story later than the next tick
+				if (++attempts < 20) setTimeout(tryScroll, 50);
+			};
+			setTimeout(tryScroll, 0);
 			return false;
 		});
 	};
