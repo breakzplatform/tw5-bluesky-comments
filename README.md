@@ -61,4 +61,4 @@ Then open http://localhost:8080 and create a tiddler with a `bluesky-post` field
 
 ## License
 
-[MIT](LICENSE)
+[Apache-2.0](LICENSE). See also [NOTICE](NOTICE).
