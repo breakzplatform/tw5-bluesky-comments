@@ -4,6 +4,10 @@ type: text/vnd.tiddlywiki
 
 I'm trying to follow the rules of [[Semantic Versioning|https://semver.org/]].
 
+!! 1.0.2
+
+* License changed to Apache-2.0
+
 !! 1.0.1
 
 * The toolbar button now scrolls to the comments on older cores such as 5.1.23
